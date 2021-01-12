@@ -22,10 +22,17 @@
 section{
   padding: 1rem;
 }
+.contents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+}
 
 /*
   display: flex : 양옆으로 배열  
   flex-direction : column : 세로로 정렬되게
   justify-content: space-between : covid-19와 select 가 양쪽으로 붙도록
   align-items: center(Defaul는 stetch. 정가운데 위치할 수 있도록
+
+  grid-template-colums(옆으로 가도록) : 1fr 1fr (한 줄에 두개씩 올수있도록)
   */

@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+### COVID-19 집계 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a href='https://www.youtube.com/watch?v=DtLhiMxgsm0&feature=youtu.be'>강의 영상 </a>
 
-## Available Scripts
+#### 완성 페이지
+<img src='./public/result.png' width=500 heigth=400>
 
-In the project directory, you can run:
+<br>
+<br>
 
-### `npm start`
+### 강의 내용
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* 사용 api : https://api.covid19api.com/total/dayone/country/kr
+* $ npm create-react-app covid (covid react project 생성)
+* ES7 snippet extension을 설치해서 편리하게 사용
+>파일생성 후 rafce 단축어를 입력하면 자동으로 react 기본 코드가 제공됨
+* $ npm install axios react-chartjs-2 (axios와 차트표현을 위한 react-chartjs-2를 install)
+* $ npm install chart.js
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### 구조
+* 한페이지에 헤더와 그래프들이 들어간다
+* Header와 Contents(그래프들)로 component를 나눈다
 
-### `npm test`
+#### 코드
+* App.css
+    * display: flex -> header와 body로 나뉠것 이므로
+    * flex-direction: column -> 세로로 정렬되도록
+    * justify-content: space-between -> COVID-19와 select가 양 옆으로 붙도록
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* useEffect : mount가 되었을 때 method를 실행하도록
+    * 로딩전(차트가 표시되기 전)api에서 data를 받아오는 함수를 넣어둔다
+    * data를 받아 필요한 정보만 처리하는 makeData함수도 실행되도록 한다(reduce 구문 사용)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* useState : state를 관리하는
+    * [Data명, setting_method(보통 setData명 으로 이름 설정)] = useState(초기값)
+    * 현재 Contents.js의 confirmedData는 object 형태이다(labels과 datasets가 존재)
